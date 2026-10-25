@@ -1,0 +1,48 @@
+﻿<Window x:Class="projWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Elektro-Bud - System Magazynowy" Height="450" Width="800"
+        Background="#F4F8F5">
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Elektro-Bud katalog" FontSize="20" FontWeight="Bold" Foreground="#1B4332" Margin="0,0,0,10"/>
+
+        <WrapPanel Grid.Row="1" Margin="0,0,0,15">
+            <TextBox x:Name="TxtEan" Width="100" Margin="0,0,8,8" ToolTip="EAN"/>
+            <TextBox x:Name="TxtName" Width="120" Margin="0,0,8,8" ToolTip="Nazwa"/>
+            <TextBox x:Name="TxtCategory" Width="100" Margin="0,0,8,8" ToolTip="Kategoria"/>
+            <TextBox x:Name="TxtSector" Width="70" Margin="0,0,8,8" ToolTip="Sektor"/>
+            <TextBox x:Name="TxtShelf" Width="70" Margin="0,0,8,8" ToolTip="Półka"/>
+            <TextBox x:Name="TxtLevel" Width="70" Margin="0,0,8,8" ToolTip="Poziom"/>
+            <Button Content="Dodaj" Click="AddButton_Click" Background="#2D6A4F" Foreground="White" FontWeight="Bold" Padding="10,5"/>
+        </WrapPanel>
+
+        
+        <DataGrid x:Name="ProductsGrid" Grid.Row="2" AutoGenerateColumns="False" CanUserAddRows="False" Background="White">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="EAN" Binding="{Binding Ean}" Width="120"/>
+                <DataGridTextColumn Header="Nazwa" Binding="{Binding Name}" Width="150"/>
+                <DataGridTextColumn Header="Kategoria" Binding="{Binding Category}" Width="120"/>
+                <DataGridTextColumn Header="Sektor" Binding="{Binding Sector}" Width="70"/>
+                <DataGridTextColumn Header="Półka" Binding="{Binding Shelf}" Width="70"/>
+                <DataGridTextColumn Header="Poziom" Binding="{Binding Level}" Width="70"/>
+
+                <DataGridTemplateColumn Width="70">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Usuń" Click="DeleteButton_Click" Background="#D90429" Foreground="White"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
+<!--dokumentacja odnosnie dataGrid:https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.datagrid?view=windowsdesktop-10.0 , https://learn.microsoft.com/en-us/dotnet/desktop/wpf/controls/datagrid-->
+    
+ 
